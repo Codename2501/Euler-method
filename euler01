@@ -1,6 +1,6 @@
 using System;
 
-namespace eular01
+namespace euler01
 {
     class MainClass
     {
