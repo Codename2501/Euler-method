@@ -1,0 +1,48 @@
+using System;
+
+namespace eular01
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            _ = new Eular();
+        }
+    }
+    class Eular
+    {
+        //d^2x/dt^2=-4 * x + 2 * Math.Cos(2 * t);
+        public Eular()
+        {
+            double t;//time
+            double dt;//step
+            double x1;//position
+            double x2;//speed
+            double da;
+            x1 = x2 = dt = 0;
+            da = 1.0e-4;
+            for (t = 0.0; t < 10.0;)
+            {
+                x1 += Function1(x1, x2, t) * dt;
+                x2 += Function2(x1, x2, t) * dt;
+                dt = da * Math.Cos(Math.Atan(Function3(x1, x2, t)));
+                t += dt;
+
+
+                Console.Write("{0} {1} {2}\n", t, x1, x2);
+            }
+        }
+        double Function1(double x1, double x2, double t)
+        {
+            return x2;
+        }
+        double Function2(double x1, double y2, double t)
+        {
+            return -4 * x1 + 2 * Math.Cos(2 * t);
+        }
+        double Function3(double x1, double x2, double t)
+        {
+            return t;
+        }
+    }
+}
